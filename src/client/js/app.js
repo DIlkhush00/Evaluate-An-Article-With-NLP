@@ -1,1 +1,3 @@
-alert("I'm here too!")
+export const pop = ()=>{
+    alert("I'm here too!")
+}
