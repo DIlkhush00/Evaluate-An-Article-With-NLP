@@ -1,3 +1,3 @@
 export const pop = ()=>{
-    alert("I'm here too!")
+    console.log("I'm here too!")
 }
