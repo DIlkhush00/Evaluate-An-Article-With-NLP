@@ -1,4 +1,5 @@
-import { pop } from './js/app.js'
+import { pop } from './js/app.js';
+import './styles/base.scss';
 
-pop()
+pop();
 alert("I'm here");
