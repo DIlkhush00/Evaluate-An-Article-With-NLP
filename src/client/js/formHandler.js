@@ -1,13 +1,22 @@
+//Global Variables
+const postDataURL = 'http://localhost:8081/send-url';
+const getDataURL = 'http://localhost:8081/get-article-sentiment-analysis';
+
+const userInputElement = document.getElementById('userInput');
+const submitButton = document.querySelector('.userSubmit'); 
+
+const outputSection = document.querySelector('.outputSection');
+const errorSection = document.querySelector('.errorSection');
+const errorDiv = document.querySelector('.errorDiv');
+
 //handling form
 export function handleSubmit(event){
     //prevent default behaviour
     event.preventDefault();
 
-    const postDataURL = 'http://localhost:8081/send-url';
-    const getDataURL = 'http://localhost:8081/get-article-sentiment-analysis';
-
-    const userInputElement = document.getElementById('userInput');
     const userInput = userInputElement.value;
+
+    submitButton.value = 'Evaluating...'
 
     if(Client.checkUrl(userInput)){ 
         postData(postDataURL, userInput)
@@ -48,7 +57,6 @@ async function getData(url=''){
     const data = await fetch(url);
     try{
         const newData = await data.json()
-        console.log("Heres our newData", newData)
         return newData
     }
     catch(err){
@@ -57,23 +65,18 @@ async function getData(url=''){
 }
 
 //Updates the user interface with appropriate data
-function updateUI(data){
-    const outputSection = document.querySelector('.outputSection');
-    const errorSection = document.querySelector('.errorSection');
-
-    const errorDiv = document.querySelector('.errorSection');
-    
-    const outputURL = document.querySelector('#url');
+function updateUI(data){    
     const subjectivity = document.querySelector('#subjectivity');
     const score = document.querySelector('#score');
     const irony = document.querySelector('#irony');
     const text = document.querySelector('#text-snippet');
 
-    outputURL.innerHTML = data.data.url;
-    subjectivity.innerHTML = data.data.subjectivity;
-    score.innerHTML = data.data.score_tag;
-    irony.innerHTML = data.data.irony;
-    text.innerHTML = data.data.sentence_list[0][0].text;
+    submitButton.value = 'Submit'
+
+    subjectivity.innerHTML = data.subjectivity;
+    score.innerHTML = evaluateScore(data.score_tag);
+    irony.innerHTML = data.irony;
+    text.innerHTML = data.sentence_list[0].text;
 
     //hides error section and shows output section
     if(outputSection.classList.contains('hide')){
@@ -86,11 +89,8 @@ function updateUI(data){
 
 //shows error section
 function showError(error=''){
-    const outputSection = document.querySelector('.outputSection');
-    const errorSection = document.querySelector('.errorSection');
 
-    const errorDiv = document.querySelector('.errorDiv');
-    const output = document.querySelector('.analysisOutput');
+    submitButton.value = 'Submit'
 
     errorDiv.classList.add('error');
     errorDiv.innerHTML = error;
@@ -103,4 +103,18 @@ function showError(error=''){
     if(errorSection.classList.contains('hide')){
         errorSection.classList.remove('hide')
     }
+}
+
+//Evaluate score
+function evaluateScore(score){
+    let score_value = ''
+
+    if(score == 'P+') score_value = 'Strong Positive'
+    else if(score == 'P') score_value = 'Positive'
+    else if(score == 'NEU') score_value = 'Neutral'
+    else if(score == 'N') score_value = 'Negative'
+    else if(score == 'N+') score_value = 'Strong Negative'
+    else score_value = 'Without Sentiment'
+
+    return score_value
 }
