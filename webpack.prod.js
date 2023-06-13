@@ -2,13 +2,16 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     mode: 'production',
     entry: './src/client/index.js',
+    target: 'node',
     output: {
-        filename: 'bundle.js',
-        clean: true
+        libraryTarget: 'var',
+        library: 'Client',
     },
     optimization: {
         minimize: true,

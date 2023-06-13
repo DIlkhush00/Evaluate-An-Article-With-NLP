@@ -14,13 +14,26 @@
         <h2>Evaluting A News Article With Natural Language Processing</h2>
         <section class="inputSection" id="inputSection">
             <form class="inputForm">
-                <input type="text" class="userInput" placeholder="Enter your text here...">
-                <input type="submit" value="Submit" class="userSubmit">
+                <input type="text" id="userInput" class="userInput" placeholder="Enter your URL here...">
+                <input type="submit" value="Submit" class="userSubmit" onclick="return Client.handleSubmit(event)">
             </form>
         </section>
-        <section class="outputSection">
-            <div class="analysis">--Analysis--</div>
-            <div class="analysisOutput">Output</div>
+        <section class="errorSection hide">
+            <div class="errorDiv">
+
+            </div>
+        </section>
+        <section class="outputSection hide">
+            <div class="analysis">Evaluation Result</div>
+            <div class="analysisOutput">
+                <ul class="evaluationList">
+                    <li>URL<b>:</b> <span id="url"></span></li>
+                    <li>SubJectivity<b>:</b> <span id="subjectivity"></span></li>
+                    <li>Score<b>:</b> <span id="score"></span></li>
+                    <li>Irony<b>:</b> <span id="irony"></span></li>
+                    <li>Text Snippet<b>:</b> <span id="text-snippet"></span></li>
+                </ul>               
+            </div>
         </section>
     </main>
     <footer>

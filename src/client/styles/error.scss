@@ -1,0 +1,10 @@
+.errorSection {
+    border: 2px solid red;
+    margin-top: 1.5rem;
+    .errorDiv {
+        padding-block: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        color: rgb(182, 182, 0);
+    }
+}

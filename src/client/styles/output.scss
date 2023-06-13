@@ -1,5 +1,6 @@
 .outputSection {
     margin-top: 3rem;
+    border: 2px solid green;
 
     .analysis {
         width: 100%;
@@ -7,6 +8,18 @@
         font-size: 1.5rem;
         font-weight: 700;
         padding-block: 1.5rem;
+
+    }
+    .analysisOutput {
+
+        .evaluationList {
+            font-size: 1rem;
+            list-style: none;
+
+            li > span {
+                color: #ff4500;
+            }
+        }
     }
 
 }
