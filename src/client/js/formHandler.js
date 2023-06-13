@@ -10,7 +10,7 @@ const errorSection = document.querySelector('.errorSection');
 const errorDiv = document.querySelector('.errorDiv');
 
 //handling form
-export function handleSubmit(event){
+function handleSubmit(event){
     //prevent default behaviour
     event.preventDefault();
 
@@ -118,3 +118,5 @@ function evaluateScore(score){
 
     return score_value
 }
+
+export { handleSubmit, evaluateScore }
