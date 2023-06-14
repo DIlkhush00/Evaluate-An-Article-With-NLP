@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, '../../dist')));
 const baseURL = "https://api.meaningcloud.com/sentiment-2.1"
 let inputURL
 const data = {
-
+    sentence_list: []
 }
 
 //Routes
@@ -61,6 +61,7 @@ app.get('/get-article-sentiment-analysis', async (req, res)=>{
         res.send(data)
     }
     catch(err){
+        res.send(err)
         console.log(err)
     }
 })
