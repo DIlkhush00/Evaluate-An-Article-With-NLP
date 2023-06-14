@@ -29,7 +29,7 @@ This application is mainly built with:
 
 
 ## Preview
-![Preview](https://github.com/DIlkhush00/This-repo/blob/master/images/preview.png)
+![Preview](https://github.com/DIlkhush00/Evaluate-An-Article-With-NLP/blob/master/images/preview.png)
 
 ## Prerequisite
 -  You must have `Node.js` installed on your computer
@@ -38,7 +38,7 @@ This application is mainly built with:
 ## Installation
 1. Clone the repo
 ```sh
-git clone https://github.com/DIlkhush00/This-repo/
+git clone https://github.com/DIlkhush00/Evaluate-An-Article-With-NLP/
 ``` 
 2. Run the following Command in terminal to install necessary dependencies
 ```sh
