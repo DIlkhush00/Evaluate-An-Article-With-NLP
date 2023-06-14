@@ -70,10 +70,14 @@ function updateUI(data){
     const score = document.querySelector('#score');
     const irony = document.querySelector('#irony');
     const text = document.querySelector('#text-snippet');
+    const agreement = document.querySelector('#agreement');
+    const confidence = document.querySelector('#confidence');
 
     submitButton.value = 'Submit'
 
     subjectivity.innerHTML = data.subjectivity;
+    agreement.innerHTML = data.agreement;
+    confidence.innerHTML = data.confidence
     score.innerHTML = evaluateScore(data.score_tag);
     irony.innerHTML = data.irony;
     text.innerHTML = data.sentence_list[0].text;

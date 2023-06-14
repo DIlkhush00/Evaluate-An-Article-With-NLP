@@ -31,10 +31,7 @@ app.use(express.static(path.join(__dirname, '../../dist')));
 const baseURL = "https://api.meaningcloud.com/sentiment-2.1"
 let inputURL
 const data = {
-    subjectivity: '',
-    irony: '',
-    score_tag: '',
-    sentence_list: [],
+
 }
 
 //Routes
@@ -51,13 +48,15 @@ app.post('/send-url', (req, res)=>{
 
 app.get('/get-article-sentiment-analysis', async (req, res)=>{
     console.log("here's the object data", data)
-    const evalutionData = await fetch(`${baseURL}?key=${process.env.API_KEY}&lang=auto&url=${inputURL}`)
     try {
+        const evalutionData = await fetch(`${baseURL}?key=${process.env.API_KEY}&lang=auto&url=${inputURL}`)
         const newData = await evalutionData.json()
-        data.subjectivity = newData.subjectivity
-        data.irony = newData.irony
-        data.score_tag = newData.score_tag
-        data.sentence_list[0] = newData.sentence_list[0]
+        data['subjectivity'] = newData.subjectivity
+        data['agreement'] = newData.agreement
+        data['confidence'] = newData.confidence
+        data['irony'] = newData.irony
+        data['score_tag'] = newData.score_tag
+        data['sentence_list'][0] = newData.sentence_list[0]
         console.log("New data: ", data)
         res.send(data)
     }
