@@ -29,7 +29,7 @@ This application is mainly built with:
 
 
 ## Preview
-![Preview](https://github.com/DIlkhush00/Evaluate-An-Article-With-NLP/blob/master/images/preview.png)
+![Preview](./images/preview.png)
 
 ## Prerequisite
 -  You must have `Node.js` installed on your computer
